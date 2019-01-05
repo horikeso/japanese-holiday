@@ -121,20 +121,27 @@ var Holiday = (function () {
         {"name": "こどもの日", "month": 5, "day": 5, "start": 1949, "end": null},
         {"name": "皇太子・皇太子徳仁親王の結婚の儀", "month": 6, "day": 9, "start": 1993, "end": 1993},
         {"name": "海の日", "month": 7, "day": 20, "start": 1996, "end": 2002},
-        {"name": "山の日", "month": 8, "day": 11, "start": 2016, "end": null},
+        {"name": "海の日", "month": 7, "day": 23, "start": 2020, "end": 2020},
+        {"name": "山の日", "month": 8, "day": 11, "start": 2016, "end": 2019},
+        {"name": "山の日", "month": 8, "day": 10, "start": 2020, "end": 2020},
+        {"name": "山の日", "month": 8, "day": 11, "start": 2021, "end": null},
         {"name": "敬老の日", "month": 9, "day": 5, "start": 1966, "end": 2002},
         {"name": "体育の日", "month": 10, "day": 10, "start": 1966, "end": 1999},
         {"name": "文化の日", "month": 11, "day": 3, "start": 1948, "end": null},
-        {"name": "即位の礼正殿の儀", "month": 11, "day": 12, "start": 1990, "end": 1990},
+        {"name": "即位礼正殿の儀", "month": 11, "day": 12, "start": 1990, "end": 1990},
         {"name": "勤労感謝の日", "month": 11, "day": 23, "start": 1948, "end": null},
         {"name": "天皇誕生日", "month": 12, "day": 23, "start": 1989, "end": null},
+        {"name": "天皇の即位の日", "month": 5, "day": 1, "start": 2019, "end": 2019},
+        {"name": "即位礼正殿の儀", "month": 10, "day": 22, "start": 2019, "end": 2019},
     ];
 
     var _happyMondayObjectList = [
         {"name": "成人の日", "month": 1, "weekNumber": 2, "start": 2000, "end": null},
-        {"name": "海の日", "month": 7, "weekNumber": 3, "start": 2003, "end": null},
+        {"name": "海の日", "month": 7, "weekNumber": 3, "start": 2003, "end": 2019},
+        {"name": "海の日", "month": 7, "weekNumber": 3, "start": 2021, "end": null},
         {"name": "敬老の日", "month": 9, "weekNumber": 3, "start": 2003, "end": null},
-        {"name": "体育の日", "month": 10, "weekNumber": 2, "start": 2000, "end": null},
+        {"name": "体育の日", "month": 10, "weekNumber": 2, "start": 2000, "end": 2019},
+        {"name": "スポーツの日", "month": 10, "weekNumber": 2, "start": 2021, "end": null},
     ];
 
     /**
@@ -150,15 +157,6 @@ var Holiday = (function () {
         var month = date.getMonth() + 1;
         var day = date.getDate();
         var weekday = date.getDay();
-
-        // 第何週
-        var weekNumber = null;
-
-        if (day % 7 == 0) {
-            weekNumber = day / 7;
-        } else {
-            weekNumber = parseInt(day / 7, 10) + 1;
-        }
 
         // 固定祝日
         _fixHolidayObjectList.forEach(function (object) {
@@ -177,6 +175,15 @@ var Holiday = (function () {
 
         if (publicHolidayName !== "") {
             return publicHolidayName;
+        }
+
+        // 第何週
+        var weekNumber = null;
+
+        if (day % 7 == 0) {
+            weekNumber = day / 7;
+        } else {
+            weekNumber = parseInt(day / 7, 10) + 1;
         }
 
         // ハッピーマンデー制度
