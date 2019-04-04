@@ -125,7 +125,7 @@ var Holiday = (function () {
         {"name": "山の日", "month": 8, "day": 11, "start": 2016, "end": 2019},
         {"name": "山の日", "month": 8, "day": 10, "start": 2020, "end": 2020},
         {"name": "山の日", "month": 8, "day": 11, "start": 2021, "end": null},
-        {"name": "敬老の日", "month": 9, "day": 5, "start": 1966, "end": 2002},
+        {"name": "敬老の日", "month": 9, "day": 15, "start": 1966, "end": 2002},
         {"name": "体育の日", "month": 10, "day": 10, "start": 1966, "end": 1999},
         {"name": "文化の日", "month": 11, "day": 3, "start": 1948, "end": null},
         {"name": "即位礼正殿の儀", "month": 11, "day": 12, "start": 1990, "end": 1990},
