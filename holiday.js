@@ -130,9 +130,10 @@ var Holiday = (function () {
         {"name": "文化の日", "month": 11, "day": 3, "start": 1948, "end": null},
         {"name": "即位礼正殿の儀", "month": 11, "day": 12, "start": 1990, "end": 1990},
         {"name": "勤労感謝の日", "month": 11, "day": 23, "start": 1948, "end": null},
-        {"name": "天皇誕生日", "month": 12, "day": 23, "start": 1989, "end": null},
+        {"name": "天皇誕生日", "month": 12, "day": 23, "start": 1989, "end": 2018},
         {"name": "天皇の即位の日", "month": 5, "day": 1, "start": 2019, "end": 2019},
         {"name": "即位礼正殿の儀", "month": 10, "day": 22, "start": 2019, "end": 2019},
+        {"name": "天皇誕生日", "month": 2, "day": 23, "start": 2020, "end": null},
     ];
 
     var _happyMondayObjectList = [
