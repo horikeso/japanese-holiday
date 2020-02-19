@@ -134,6 +134,7 @@ var Holiday = (function () {
         {"name": "天皇の即位の日", "month": 5, "day": 1, "start": 2019, "end": 2019},
         {"name": "即位礼正殿の儀", "month": 10, "day": 22, "start": 2019, "end": 2019},
         {"name": "天皇誕生日", "month": 2, "day": 23, "start": 2020, "end": null},
+        {"name": "スポーツの日", "month": 7, "day": 24, "start": 2020, "end": 2020},
     ];
 
     var _happyMondayObjectList = [
