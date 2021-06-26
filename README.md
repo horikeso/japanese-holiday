@@ -2,8 +2,9 @@
 
 日付から祝日を判定する
 
-[Pages](https://horikeso.github.io/japanese-holiday/)
-[Demo](https://horikeso.github.io/japanese-holiday/demo.html)
+- [GitHub Pages](https://horikeso.github.io/japanese-holiday/)
+
+- [Demo](https://horikeso.github.io/japanese-holiday/demo.html)
 
 ## Usage
 
