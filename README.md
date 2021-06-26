@@ -2,10 +2,7 @@
 
 日付から祝日を判定する
 
-[国民の祝日について - 内閣府](https://www8.cao.go.jp/chosei/shukujitsu/gaiyou.html)
-
-## Demo
-
+[Pages](https://horikeso.github.io/japanese-holiday/)
 [Demo](https://horikeso.github.io/japanese-holiday/demo.html)
 
 ## Usage
@@ -104,3 +101,7 @@ JapaneseHoliday.getHolidayName(new Date("2015/9/1"));
 ```
 ""
 ```
+
+# Link
+
+[国民の祝日について - 内閣府](https://www8.cao.go.jp/chosei/shukujitsu/gaiyou.html)
