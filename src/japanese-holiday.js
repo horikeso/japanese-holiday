@@ -156,8 +156,6 @@ export const JapaneseHoliday = (() => {
     { name: "即位礼正殿の儀", month: 10, day: 22, start: 2019, end: 2019 },
     { name: "天皇誕生日", month: 2, day: 23, start: 2020, end: null },
     { name: "スポーツの日", month: 7, day: 24, start: 2020, end: 2020 },
-    { name: "スポーツの日", month: 7, day: 24, start: 2020, end: 2020 },
-    { name: "スポーツの日", month: 7, day: 24, start: 2020, end: 2020 },
     { name: "スポーツの日", month: 7, day: 23, start: 2021, end: 2021 },
   ];
 
