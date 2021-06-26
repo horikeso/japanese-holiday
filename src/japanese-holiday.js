@@ -1,13 +1,14 @@
+// @see https://www8.cao.go.jp/chosei/shukujitsu/gaiyou.html
 // 敬老の日と秋分の日は重なりません（敬老の日 9/15～9/21の間で移動。秋分の日 9/22か9/23のどちらか）
 
-var Holiday = (function () {
+export const JapaneseHoliday = (() => {
   /**
-   * 休日取得
+   * 祝日取得
    * @param Date date
    * @return string
    */
-  var getHolidayName = function (date) {
-    var holidayName = "";
+  const getHolidayName = function (date) {
+    let holidayName = "";
 
     if (typeof date != "object") {
       return holidayName;
@@ -25,19 +26,19 @@ var Holiday = (function () {
       return holidayName;
     }
 
-    var year = date.getFullYear();
-    var month = date.getMonth() + 1;
-    var day = date.getDate();
-    var weekday = date.getDay();
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    const weekday = date.getDay();
 
     // 振替休日の判定
 
-    var timeStamp = date.getTime();
+    const timeStamp = date.getTime();
     // 前日(dateをベースに別インスタンスで作成)
-    var previousDate = new Date(timeStamp);
+    const previousDate = new Date(timeStamp);
     previousDate.setDate(date.getDate() - 1);
     // 前日(dateをベースに別インスタンスで作成)
-    var previousDateForLoop = new Date(timeStamp);
+    const previousDateForLoop = new Date(timeStamp);
     previousDateForLoop.setDate(date.getDate() - 1);
 
     // 1986-2006の5月4日の特殊処理
@@ -96,7 +97,7 @@ var Holiday = (function () {
 
     // 前後が国民の祝日である平日は国民の休日となる
     // 次の日(dateをベースに別インスタンスで作成)
-    var nextDate = new Date(timeStamp);
+    const nextDate = new Date(timeStamp);
     nextDate.setDate(date.getDate() + 1);
 
     if (new Date("1985/12/27") <= date) {
@@ -113,7 +114,7 @@ var Holiday = (function () {
     return holidayName;
   };
 
-  var _fixHolidayObjectList = [
+  const _fixHolidayObjectList = [
     { name: "元日", month: 1, day: 1, start: 1949, end: null },
     { name: "成人の日", month: 1, day: 15, start: 1949, end: 1999 },
     { name: "建国記念の日", month: 2, day: 11, start: 1967, end: null },
@@ -160,7 +161,7 @@ var Holiday = (function () {
     { name: "スポーツの日", month: 7, day: 23, start: 2021, end: 2021 },
   ];
 
-  var _happyMondayObjectList = [
+  const _happyMondayObjectList = [
     { name: "成人の日", month: 1, weekNumber: 2, start: 2000, end: null },
     { name: "海の日", month: 7, weekNumber: 3, start: 2003, end: 2019 },
     { name: "海の日", month: 7, weekNumber: 3, start: 2022, end: null },
@@ -174,13 +175,13 @@ var Holiday = (function () {
    * @param Date date
    * @return string
    */
-  var _getPublicHolidayName = function (date) {
-    var publicHolidayName = "";
+  const _getPublicHolidayName = function (date) {
+    let publicHolidayName = "";
 
-    var year = date.getFullYear();
-    var month = date.getMonth() + 1;
-    var day = date.getDate();
-    var weekday = date.getDay();
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    const weekday = date.getDay();
 
     // 固定祝日
     _fixHolidayObjectList.forEach(function (object) {
@@ -209,7 +210,7 @@ var Holiday = (function () {
     }
 
     // 第何週
-    var weekNumber = null;
+    let weekNumber = null;
 
     if (day % 7 == 0) {
       weekNumber = day / 7;

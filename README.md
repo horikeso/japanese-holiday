@@ -1,61 +1,106 @@
-# 概要
+# JapaneseHoliday
 
-日付から休日を判定するJavaScriptです。
+日付から祝日を判定する
 
-# 判定順序
+[国民の祝日について - 内閣府](https://www8.cao.go.jp/chosei/shukujitsu/gaiyou.html)
 
-国民の祝日を判定⇒振替休日を判定⇒国民の休日を判定
+## Demo
 
-# 使い方例
+[Demo](https://horikeso.github.io/japanese-holiday/demo.html)
 
-* 固定祝日
+## Usage
+
+- html
+
+```html
+<script src="main.js" type="module"></script>
 ```
-Holiday.getHolidayName(new Date("2015/1/1"));
 
+- main.js
+
+```js
+import { JapaneseHoliday } from "./japanese-holiday.js";
+
+// for browser
+window.JapaneseHoliday = JapaneseHoliday;
+```
+
+---
+
+- 固定祝日
+
+```js
+JapaneseHoliday.getHolidayName(new Date("2015/1/1"));
+```
+
+```
 "元日"
 ```
 
-* 休日ではない場合
-```
-Holiday.getHolidayName(new Date("2015/9/1"));
+- ハッピーマンデー制度
 
-""
+```js
+JapaneseHoliday.getHolidayName(new Date("2015/9/21"));
 ```
 
-* ハッピーマンデー制度
 ```
-Holiday.getHolidayName(new Date("2015/9/21"));
-
 "敬老の日"
 ```
 
-* 国民の休日
-```
-Holiday.getHolidayName(new Date("2015/9/22"));
+- 国民の休日
 
+```js
+JapaneseHoliday.getHolidayName(new Date("2015/9/22"));
+```
+
+```
 "国民の休日"
 ```
 
-* 春分の日・秋分の日
+- 春分の日・秋分の日
+
+```js
+JapaneseHoliday.getHolidayName(new Date("2017/3/20"));
 ```
-Holiday.getHolidayName(new Date("2017/3/20"));
 
+```
 "春分の日"
+```
 
-Holiday.getHolidayName(new Date("2017/9/23"));
+```js
+JapaneseHoliday.getHolidayName(new Date("2017/9/23"));
+```
 
+```
 "秋分の日"
 ```
 
-* 月曜の振替休日
-```
-Holiday.getHolidayName(new Date("2017/1/2"));
+- 月曜の振替休日
 
+```js
+JapaneseHoliday.getHolidayName(new Date("2017/1/2"));
+```
+
+```
 "振替休日"
 ```
-* 月曜以外の振替休日
-```
-Holiday.getHolidayName(new Date("2020/5/6"));
 
+- 月曜以外の振替休日
+
+```js
+JapaneseHoliday.getHolidayName(new Date("2020/5/6"));
+```
+
+```
 "振替休日"
+```
+
+- 休日以外は空文字
+
+```js
+JapaneseHoliday.getHolidayName(new Date("2015/9/1"));
+```
+
+```
+""
 ```

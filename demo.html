@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>日本の祝日</title>
+    <script
+      src="https://cdn.jsdelivr.net/npm/handsontable@6.2.2/dist/handsontable.full.min.js"
+      defer
+    ></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/handsontable@6.2.2/dist/handsontable.full.min.css"
+      rel="stylesheet"
+      media="screen"
+    />
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js" async></script>
+    <script
+      src="https://horikeso.github.io/japanese-holiday/src/main.js"
+      type="module"
+    ></script>
+    <script
+      src="https://unpkg.com/alpinejs@3.1.1/dist/cdn.min.js"
+      defer
+    ></script>
+  </head>
+  <body>
+    <div
+      x-data="holiday"
+      x-init="() => {
+        targetYear = new Date().getFullYear();
+        createHoT();
+        updateDateList();
+        // 2回やらないとHandsontableが描画されない
+        updateDateList();
+      }"
+    >
+      <input
+        type="range"
+        x-model="targetYear"
+        @change.throttle="updateDateList"
+        min="1950"
+        max="2100"
+        style="width: 50%"
+      />
+      <dev x-text="targetYear"></dev>
+      <h1 x-text="targetYear + '年の祝日一覧'"></h1>
+      <b
+        x-text="targetYear + '年の祝日は' + dateList.length + '回あります。'"
+      ></b>
+      <div id="grid"></div>
+      <!-- <table>
+        <template x-for="(date, index) in dateList">
+          <tr>
+            <td x-text="date.label"></td>
+            <td x-text="date.holidayName"></td>
+          </tr>
+        </template>
+      </table> -->
+    </div>
+
+    <script>
+      const holiday = {
+        targetYear: null,
+        dateList: [],
+        Hot: {},
+        updateDateList() {
+          const dateList = [];
+          const year = this.targetYear;
+          const beginDate = new Date(year + "/01/01");
+          const endDate = new Date(year + "/12/31");
+          const currentDate = new Date(year + "/01/01");
+
+          while (currentDate < endDate) {
+            currentDate.setDate(currentDate.getDate() + 1);
+            const holidayName = JapaneseHoliday.getHolidayName(currentDate);
+            if (holidayName === "") {
+              continue;
+            }
+            dateList.push({
+              label: dayjs(currentDate).format("YYYY年MM月DD日"),
+              holidayName: JapaneseHoliday.getHolidayName(currentDate),
+            });
+          }
+
+          this.dateList = dateList;
+          this.setGridData(this.dateList);
+        },
+        createHoT() {
+          var grid = document.getElementById("grid");
+          this.HoT = new Handsontable(grid, {
+            data: [],
+            readOnly: true,
+            rowHeaders: false,
+            colHeaders: false,
+            filters: true,
+            dropdownMenu: true,
+            autoColumnSize: false,
+            colWidths: [150, 200],
+          });
+        },
+        setGridData(gridData) {
+          this.HoT.loadData(gridData);
+        },
+      };
+    </script>
+  </body>
+</html>
