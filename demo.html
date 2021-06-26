@@ -34,12 +34,12 @@
       }"
     >
       <input
-        type="range"
+        type="number"
         x-model="targetYear"
         @change.throttle="updateDateList"
         min="1950"
         max="2100"
-        style="width: 50%"
+        placeholder="year"
       />
       <dev x-text="targetYear"></dev>
       <h1 x-text="targetYear + '年の祝日一覧'"></h1>
@@ -69,16 +69,18 @@
           const endDate = new Date(year + "/12/31");
           const currentDate = new Date(year + "/01/01");
 
-          while (currentDate < endDate) {
-            currentDate.setDate(currentDate.getDate() + 1);
+          while (currentDate <= endDate) {
             const holidayName = JapaneseHoliday.getHolidayName(currentDate);
             if (holidayName === "") {
+              currentDate.setDate(currentDate.getDate() + 1);
               continue;
             }
+
             dateList.push({
               label: dayjs(currentDate).format("YYYY年MM月DD日"),
               holidayName: JapaneseHoliday.getHolidayName(currentDate),
             });
+            currentDate.setDate(currentDate.getDate() + 1);
           }
 
           this.dateList = dateList;
